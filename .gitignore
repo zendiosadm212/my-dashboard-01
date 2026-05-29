@@ -1,7 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
+# ============================================================
+# Dependencies
+# ============================================================
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -10,33 +12,114 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# ============================================================
+# Next.js
+# ============================================================
 /.next/
 /out/
-
-# production
 /build
 
-# misc
-.DS_Store
-*.pem
+# ============================================================
+# TypeScript
+# ============================================================
+*.tsbuildinfo
+next-env.d.ts
 
-# debug
+# ============================================================
+# Environment Variables (NEVER commit secrets!)
+# ============================================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# Keep .env.example as a template (do NOT ignore it)
+# !.env.example
+
+# ============================================================
+# Firebase
+# ============================================================
+.firebase/
+firebase-debug.log
+firestore-debug.log
+database-debug.log
+ui-debug.log
+# Firebase service account keys (CRITICAL: never commit these)
+*-service-account*.json
+firebase-adminsdk*.json
+serviceAccountKey.json
+
+# ============================================================
+# Testing & Coverage
+# ============================================================
+/coverage
+/.nyc_output
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# ============================================================
+# Debug & Logs
+# ============================================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+lerna-debug.log*
+*.log
 
-# env files (can opt-in for committing if needed)
-.env
-.env.local
+# ============================================================
+# OS Generated Files
+# ============================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# vercel
+# ============================================================
+# Editor & IDE
+# ============================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ============================================================
+# Certificates & Keys
+# ============================================================
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+
+# ============================================================
+# Deployment & Hosting
+# ============================================================
 .vercel
+.netlify
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# ============================================================
+# Package Manager Locks (keep only one)
+# ============================================================
+# Uncomment whichever you DON'T use:
+# yarn.lock
+# pnpm-lock.yaml
+# package-lock.json
+
+# ============================================================
+# Miscellaneous
+# ============================================================
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
