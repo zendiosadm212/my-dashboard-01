@@ -118,10 +118,6 @@ export function ThemeCustomizer({ open, onOpenChange }: ThemeCustomizerProps) {
                   <TabsTrigger value="theme" className="cursor-pointer data-[state=active]:bg-background"><Palette className="h-4 w-4 mr-1" /> Theme</TabsTrigger>
                   <TabsTrigger value="layout" className="cursor-pointer data-[state=active]:bg-background"><Layout className="h-4 w-4 mr-1" /> Layout</TabsTrigger>
                 </TabsList>
-                {/* <TabsList className="grid w-full grid-cols-2 rounded-none h-12 p-1.5">
-                  <TabsTrigger value="theme" className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"><Palette className="h-4 w-4 mr-1" /> Theme</TabsTrigger>
-                  <TabsTrigger value="layout" className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"><Layout className="h-4 w-4 mr-1" /> Layout</TabsTrigger>
-                </TabsList> */}
               </div>
 
               <TabsContent value="theme" className="flex-1 mt-0">

@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -36,6 +37,11 @@ const chartConfig = {
 export function SalesChart() {
   const [timeRange, setTimeRange] = useState("12m")
 
+  const filteredData = React.useMemo(() => {
+    const months = timeRange === "3m" ? 3 : timeRange === "6m" ? 6 : 12
+    return salesData.slice(-months)
+  }, [timeRange])
+
   return (
     <Card className="cursor-pointer">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -62,7 +68,7 @@ export function SalesChart() {
       <CardContent className="p-0 pt-6">
         <div className="px-6 pb-6">
           <ChartContainer config={chartConfig} className="h-[350px] w-full">
-            <AreaChart data={salesData} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
+            <AreaChart data={filteredData} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="var(--color-sales)" stopOpacity={0.4} />

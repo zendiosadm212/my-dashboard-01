@@ -131,7 +131,7 @@ export default function NotificationSettings() {
   async function onSubmit(data: NotificationsFormValues) {
     setIsSubmitting(true)
     try {
-      toast.promise(saveUserNotifications(data), {
+      await toast.promise(saveUserNotifications(data), {
         loading: "Đang lưu cài đặt...",
         success: () => (
           <div className="flex items-center gap-2">

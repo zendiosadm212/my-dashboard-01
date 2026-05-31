@@ -19,6 +19,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { Upload } from "lucide-react"
 import { useRef, useState } from "react"
+import { toast } from "sonner"
 import { Separator } from "@/components/ui/separator"
 import { Logo } from "@/components/logo"
 
@@ -60,9 +61,8 @@ export default function UserSettingsPage() {
     },
   })
 
-  function onSubmit(data: UserFormValues) {
-    console.log("Form submitted:", data)
-    // Here you would typically save the data
+  function onSubmit(_data: UserFormValues) {
+    toast.success("Profile saved successfully.")
   }
 
   const handleFileUpload = () => {
@@ -71,14 +71,23 @@ export default function UserSettingsPage() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = (e) => {
-        setProfileImage(e.target?.result as string)
-        setUseDefaultIcon(false)
-      }
-      reader.readAsDataURL(file)
+    if (!file) return
+    const validTypes = ["image/jpeg", "image/gif", "image/png"]
+    if (!validTypes.includes(file.type)) {
+      toast.error("Only JPG, GIF, or PNG files are allowed.")
+      return
     }
+    if (file.size > 800 * 1024) {
+      toast.error("File size must be under 800K.")
+      return
+    }
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      setProfileImage(e.target?.result as string)
+      setUseDefaultIcon(false)
+    }
+    reader.onerror = () => toast.error("Failed to read file.")
+    reader.readAsDataURL(file)
   }
 
   const handleReset = () => {
@@ -87,6 +96,7 @@ export default function UserSettingsPage() {
     if (fileInputRef.current) {
       fileInputRef.current.value = ""
     }
+    form.reset()
   }
 
   return (
@@ -103,7 +113,7 @@ export default function UserSettingsPage() {
             <div className="flex items-center gap-6 ">
               {useDefaultIcon ? (
                 <div className="flex h-20 w-20 items-center justify-center rounded-lg">
-                  < Logo size={56} />
+                  <Logo size={56} />
                 </div>
               ) : (
                 <Avatar className="h-20 w-20 rounded-lg">

@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -37,9 +38,8 @@ export default function AppearanceSettings() {
     },
   })
 
-  function onSubmit(data: AppearanceFormValues) {
-    console.log("Form submitted:", data)
-    // Here you would typically save the data
+  function onSubmit(_data: AppearanceFormValues) {
+    toast.success("Appearance preferences saved.")
   }
 
   return (

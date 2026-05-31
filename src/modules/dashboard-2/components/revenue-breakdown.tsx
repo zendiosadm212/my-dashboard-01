@@ -9,10 +9,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button"
 
 const revenueData = [
-  { category: "subscriptions", value: 45, amount: 24500, fill: "var(--color-subscriptions)" },
-  { category: "sales", value: 30, amount: 16300, fill: "var(--color-sales)" },
-  { category: "services", value: 15, amount: 8150, fill: "var(--color-services)" },
-  { category: "partnerships", value: 10, amount: 5430, fill: "var(--color-partnerships)" },
+  { category: "subscriptions", value: 45, amount: 24500 },
+  { category: "sales", value: 30, amount: 16300 },
+  { category: "services", value: 15, amount: 8150 },
+  { category: "partnerships", value: 10, amount: 5430 },
 ]
 
 const chartConfig = {
